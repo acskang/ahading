@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>아하딩</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">하딩의 블러그</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        {% for post in posts %}
-        <div>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
             <p>published: {{ post.published_date }}</p>
-            <p><a href="">{{ post.title }}</a></p>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
-        {% endfor %}
-
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
